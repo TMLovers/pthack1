@@ -1,5 +1,5 @@
 class Background {
-    final int IMAGE_NUM = 1;
+    final int IMAGE_NUM = 5;
     PImage images[] = new PImage[IMAGE_NUM];
 
     Background() { 
@@ -17,5 +17,9 @@ class Background {
 }
 
 public enum BackgroundImageName {
-    TEST
+    GRADUATION,
+    XMAS,
+    CLASSROOM,
+    GROUND,
+    SHRINE
 }

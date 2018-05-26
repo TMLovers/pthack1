@@ -11,6 +11,7 @@ void setup() {
 
 void draw() {
     background(0);
+
     background.show(backgroundImageName.TEST);
     otaku.show(Emotion.JOY2);
 }
