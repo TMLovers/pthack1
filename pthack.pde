@@ -7,6 +7,10 @@ Character otaku = new Character(CharactersName.OTAKU);
 
 int index = 0;
 
+int order = StoryFileName.INTRO.ordinal();
+StoryFileName[] values = StoryFileName.values();
+StoryFileName align = values[order];
+
 void setup() {
     size(1366, 768);
     background.loadImages();
@@ -14,14 +18,14 @@ void setup() {
     csvPureser.loadStoryFiles();
     textController = new TextController();
     
-}
+    }
 
 void draw() {
     background(0);
     background.show(backgroundImageName.GRADUATION);
     otaku.show(Emotion.JOY2);
 
-    String[] texts = csvPureser.getText(StoryFileName.INTRO);
+    String[] texts = csvPureser.getText(values[order]);
     if (index == texts.length - 1) {
         showChoice();
     }else{
@@ -46,9 +50,10 @@ void keyPressed() {
     textController.changeChoiceSelection(1);
   } else if (key == ' ') {
     println(textController.getChoiceSelection());
+    order++;
     index = 0;
   } else if (key == ENTER){
     textController.refreshText();
-     index++;
+    index++;
   }
 }
