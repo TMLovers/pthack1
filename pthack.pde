@@ -21,7 +21,7 @@ void draw() {
     background.show(backgroundImageName.GRADUATION);
     otaku.show(Emotion.JOY2);
 
-    String[] texts = csvPureser.getText(CSVFileName.INTRO);
+    String[] texts = csvPureser.getText(StoryFileName.INTRO);
     if (index == texts.length - 1) {
         showChoice();
     }else{
