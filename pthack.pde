@@ -7,5 +7,5 @@ void setup() {
 
 void draw() {
     background(0);
-    background.show(backgroundImageName.TEST);
+    background.show(backgroundImageName.GRADUATION);
 }
