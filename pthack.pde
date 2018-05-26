@@ -1,7 +1,11 @@
+Background background = new Background();
+BackgroundImageName backgroundImageName;
 void setup() {
-    size(displayWidth, displayHeight);
+    size(1366, 768);
+    background.loadImages();
 }
 
 void draw() {
-    background(255);
+    background(0);
+    background.show(backgroundImageName.TEST);
 }
