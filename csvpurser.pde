@@ -1,6 +1,6 @@
 class CsvPurser {
-    final int STORY_FILE_NUM = 42;
-    final int CHOICE_FILE_NUM = 7;
+    final int STORY_FILE_NUM = 41;
+    final int CHOICE_FILE_NUM = 8;
     final int GAME_FILE_NUM = 2;
     Table storyDatas[] = new Table[STORY_FILE_NUM];
     Table choiceDatas[] = new Table[CHOICE_FILE_NUM];
@@ -11,7 +11,7 @@ class CsvPurser {
 
     void loadStoryFiles() {
         for(int csvNum = 0; csvNum < STORY_FILE_NUM; csvNum++) {
-            storyDatas[csvNum] = loadTable("./csv/story/story" + str(csvNum) + ".csv");   
+            storyDatas[csvNum] = loadTable("./csv/story/" + str(csvNum) + ".csv");   
         }         
     }
 
@@ -82,7 +82,6 @@ public enum StoryFileName {
     HIRUYASUMI1,
     HIRUYASUMI2,
     HIRUYASUMI3,
-    HIRUYASUMI4,
     SYUGAKURYOKO,
     SYUGAKURYOKO1,
     SYUGAKURYOKO2,
@@ -101,8 +100,8 @@ public enum StoryFileName {
     ZYUKEN2,
     ZYUKEN3,
     SOTUGYOUSIKI,
-    LAST,
-    LAST1
+    LAST1,
+    BADEND
 }
 
 public enum ChoiceFileName{
@@ -112,7 +111,8 @@ public enum ChoiceFileName{
     CHOICE4,
     CHOICE5,
     CHOICE6,
-    CHOICE7
+    CHOICE7,
+    CHOICE8
 }
 
 public enum GameFileName{
