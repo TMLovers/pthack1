@@ -37,6 +37,10 @@ class TextView {
         text(this.showText, x, y, width - x, height - y);
         delayCount++;
     }
+
+    void refresh() {
+        this.showText = "";
+    }
     
     void showFullText(String text) {
         fill(255);

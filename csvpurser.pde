@@ -1,5 +1,5 @@
 class CsvPurser {
-    final int CSVFILE_NUM = 1;
+    final int CSVFILE_NUM = 51;
     Table csvDatas[] = new Table[CSVFILE_NUM];
 
     CsvPurser () {

@@ -12,6 +12,10 @@ class TextController {
         textView.show(text);
     }
 
+    void refreshText() {
+        textView.refresh();
+    }
+
     void showChoice(String text[]) {
         textBox.show();
         textView.showChoice(text);
