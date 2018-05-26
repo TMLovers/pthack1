@@ -1,44 +1,58 @@
 class CsvPurser {
-    final int CSVFILE_NUM = 51;
-    Table csvDatas[] = new Table[CSVFILE_NUM];
+    final int STORY_FILE_NUM = 44;
+    final int CHOICE_FILE_NUM = 7;
+    final int GAME_FILE_NUM = 51;
+    Table storyDatas[] = new Table[STORY_FILE_NUM];
 
     CsvPurser () {
     }
 
-    void loadCSVFiles() {
-        for(int csvNum = 0; csvNum < CSVFILE_NUM; csvNum++) {
-            csvDatas[csvNum] = loadTable("./csv/story" + str(csvNum) + ".csv");   
+    void loadStoryFiles() {
+        for(int csvNum = 0; csvNum < STORY_FILE_NUM; csvNum++) {
+            storyDatas[csvNum] = loadTable("./csv/story" + str(csvNum) + ".csv");   
+        }         
+    }
+
+    void loadChoiceFiles() {
+        for(int csvNum = 0; csvNum < CHOICE_FILE_NUM; csvNum++) {
+            storyDatas[csvNum] = loadTable("./csv/choice" + str(csvNum) + ".csv");   
+        }         
+    }
+
+    void loadGameFiles() {
+        for(int csvNum = 0; csvNum < GAME_FILE_NUM; csvNum++) {
+            storyDatas[csvNum] = loadTable("./csv/game" + str(csvNum) + ".csv");   
         }         
     }
 
     String[] getName(CSVFileName file) {
         String[] names = {};
-        for(int i = 1; i < csvDatas[file.ordinal()].getRowCount(); i++) {
-            names = append(names, csvDatas[file.ordinal()].getString(i,0));
+        for(int i = 1; i < storyDatas[file.ordinal()].getRowCount(); i++) {
+            names = append(names, storyDatas[file.ordinal()].getString(i,0));
         }  
         return names;
     }
 
     String[] getText(CSVFileName file) {
         String[] texts = {};
-        for(int i = 1; i < csvDatas[file.ordinal()].getRowCount(); i++) {
-            texts = append(texts, csvDatas[file.ordinal()].getString(i,1));
+        for(int i = 1; i < storyDatas[file.ordinal()].getRowCount(); i++) {
+            texts = append(texts, storyDatas[file.ordinal()].getString(i,1));
         }  
         return texts;
     }
 
     String[] getBack(CSVFileName file) {
         String[] backs = {};
-        for(int i = 1; i < csvDatas[file.ordinal()].getRowCount(); i++) {
-            backs = append(backs, csvDatas[file.ordinal()].getString(i,2));
+        for(int i = 1; i < storyDatas[file.ordinal()].getRowCount(); i++) {
+            backs = append(backs, storyDatas[file.ordinal()].getString(i,2));
         }  
         return backs;
     }
 
     String[] getFace(CSVFileName file) {
         String[] faces = {};
-        for(int i = 1; i < csvDatas[file.ordinal()].getRowCount(); i++) {
-            faces = append(faces, csvDatas[file.ordinal()].getString(i,3));
+        for(int i = 1; i < storyDatas[file.ordinal()].getRowCount(); i++) {
+            faces = append(faces, storyDatas[file.ordinal()].getString(i,3));
         }  
         return faces;
     }

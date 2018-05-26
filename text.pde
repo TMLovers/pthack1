@@ -40,6 +40,7 @@ class TextView {
 
     void refresh() {
         this.showText = "";
+        this.charNum = 0;
     }
     
     void showFullText(String text) {

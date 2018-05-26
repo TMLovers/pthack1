@@ -11,7 +11,7 @@ void setup() {
     size(1366, 768);
     background.loadImages();
     otaku.loadImages();
-    csvPureser.loadCSVFiles();
+    csvPureser.loadStoryFiles();
     textController = new TextController();
     
 }
