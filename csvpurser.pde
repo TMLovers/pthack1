@@ -59,6 +59,14 @@ class CsvPurser {
         return faces;
     }
 
+    String[] getVoice(StoryFileName file) {
+        String[] voices = {};
+        for(int i = 1; i < storyDatas[file.ordinal()].getRowCount(); i++) {
+            voices = append(voices, storyDatas[file.ordinal()].getString(i,4));
+        }  
+        return voices;
+    }
+
     String[] getChoice(ChoiceFileName file) {
         String[] choices = {};
         for(int i = 0; i < choiceDatas[file.ordinal()].getRowCount(); i++) {
