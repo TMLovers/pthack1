@@ -1,3 +1,6 @@
+import ddf.minim.*; // minimライブラリのインポート
+Minim minim;         // Minim型変数であるminimの宣言
+AudioPlayer player;  // サウンドデータ格納用の変数
 Background background = new Background();
 BackgroundImageName backgroundImageName;
 TextController textController;
@@ -7,6 +10,8 @@ Character otaku = new Character(CharactersName.OTAKU);
 
 int index = 0;
 int skip_order = 0;
+
+int speak_count = 0;
 
 boolean flag = false;
 
@@ -20,6 +25,7 @@ String[] texts;
 String[] names;
 String[] backs;
 String[] faces;
+String[] voices;
 
 String backimg = "GRADUATION";
 
@@ -30,6 +36,8 @@ void setup() {
     csvPureser.loadStoryFiles();
     csvPureser.loadChoiceFiles();
     textController = new TextController();
+    minim = new Minim(this);              // 初期化
+    
     }
 
 void draw() {
@@ -40,7 +48,8 @@ void draw() {
     names = csvPureser.getName(s_values[s_order]);
     backs = csvPureser.getBack(s_values[s_order]);
     faces = csvPureser.getFace(s_values[s_order]);
- 
+    voices = csvPureser.getVoice(s_values[s_order]);
+
     /* 背景画像 */
     if (backs[index].length() == 0) {
         switch(backimg){
@@ -142,6 +151,12 @@ void draw() {
     }
         
     }
+
+    if(voices[index].length() != 0 && speak_count == 0){
+        player = minim.loadFile("./voice/" + voices[index]);
+        player.play();
+        speak_count++;
+    }
     // println(s_order + "*********************");
     // println("***************" + skip_order );
 }
@@ -165,7 +180,9 @@ void keyPressed() {
   } else if (keyCode == DOWN) {
     textController.changeChoiceSelection(1);
   } else if (key == ENTER){
-    textController.refreshText();
+    textController.refreshText();    
+
+    speak_count = 0;
 
     if (index == texts.length -1) {
        if (names[index].indexOf("choice") != -1) {
