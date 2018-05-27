@@ -129,6 +129,18 @@ void draw() {
         showChoice();
     }else{
         showText(texts[index]);
+        switch(names[index]){
+        case "my":
+            showName("わたし");
+            break;
+        case "ota":
+            showName("家畜");
+            break;
+        default:
+            showName(names[index]); // 実行されない
+            break;
+    }
+        
     }
     // println(s_order + "*********************");
     // println("***************" + skip_order );
@@ -141,6 +153,10 @@ void showChoice() {
 
 void showText(String text) {
     textController.showText(text);
+}
+
+void showName(String text) {
+    textController.showName(text);
 }
 
 void keyPressed() {

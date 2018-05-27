@@ -12,6 +12,12 @@ class TextController {
         textView.show(text);
     }
 
+    void showName(String text){
+        textBox.name_show();
+        fill(255);
+        text(text, 40, 410, 350, 100);
+    }
+
     void refreshText() {
         textView.refresh();
     }
