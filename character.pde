@@ -5,7 +5,7 @@ class Character {
     CharactersName name;
 
     //Todo キャラクターを，真ん中に配置
-    int x = 0;
+    int x = 430;
     int y = 1;
 
     Character(CharactersName name) {
