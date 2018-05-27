@@ -40,7 +40,8 @@ void draw() {
     names = csvPureser.getName(s_values[s_order]);
     backs = csvPureser.getBack(s_values[s_order]);
     faces = csvPureser.getFace(s_values[s_order]);
-
+ 
+    /* 背景画像 */
     if (backs[index].length() == 0) {
         switch(backimg){
         case "GROUND":
@@ -89,8 +90,6 @@ void draw() {
             break;
     }
     }
-
-    println(backs[index] + "***********");
 
     /* otakuの表情 */
     switch(faces[index]){
@@ -149,11 +148,6 @@ void keyPressed() {
     textController.changeChoiceSelection(-1);
   } else if (keyCode == DOWN) {
     textController.changeChoiceSelection(1);
-  } else if (key == ' ') {
-
-    s_order++;
-        c_order++;
-    index = 0;
   } else if (key == ENTER){
     textController.refreshText();
 
