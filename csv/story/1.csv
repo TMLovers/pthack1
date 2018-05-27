@@ -1,13 +1,13 @@
-name,text,back,face
+name,text,back,face,oto
 my,"早速、席替えか、、、、
-この最初の席がこの一年間の友人関係の明暗を分ける。",,
-my,頼むからいい席になってくれ、、,,
-,がさがさがさ〜〜（くじを引く音）,,
-my,20番か、、、　隣は誰だろうか、、、、,,
-my,チラ、,,
-my,んンンンン？？？　めっちゃオタクっぽい隠キャじゃねーか,,
-my,ハズレだ、、、、、、,,
-ota,フゴフゴフゴ,,
-ota,チラ,,
-my,目が合った、、、、、、、,,
-choice1,1,,
+この最初の席がこの一年間の友人関係の明暗を分ける。",CLASSROOM,,
+my,頼むからいい席になってくれ、、,CLASSROOM,,
+sound,がさがさがさ〜〜（くじを引く音）,CLASSROOM,,
+my,20番か、、、　隣は誰だろうか、、、、,CLASSROOM,,
+my,チラ、,CLASSROOM,,
+my,んンンンン？？？　めっちゃオタクっぽい隠キャじゃねーか,CLASSROOM,otaku.jpg,
+my,ハズレだ、、、、、、,CLASSROOM,otaku.jpg,
+ota,フゴフゴフゴ,CLASSROOM,otaku.jpg,fuga.mp3
+ota,チラ,CLASSROOM,otaku.jpg,
+my,目が合った、、、、、、、,CLASSROOM,otakuKi-2.jpg,
+choice1,,,,

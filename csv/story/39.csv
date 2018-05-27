@@ -1,9 +1,9 @@
-name,text,back,face
-ota,お話いいパゴスか??,GRADUATION,otakuDo-1.jpg
-my,おお、どうした？？,,otakuDo-1.jpg
-ota,拙者、拙者、、、、、,,otakuDo-2.jpg
-my,ゆっくりでいいぞ!!!,,otakuAi-1.jpg
-ota,かしこまりーー,,otakuKi-2.jpg
+name,text,back,face,oto
+ota,お話いいパゴスか??,GRADUATION,otakuDo-1.jpg,ohanasi.mp3
+my,おお、どうした？？,,otakuDo-1.jpg,
+ota,拙者、拙者、、、、、,,otakuDo-2.jpg,sessysessya.mp3
+my,ゆっくりでいいぞ!!!,,otakuAi-1.jpg,
+ota,かしこまりーー,,otakuKi-2.jpg,kasikomari.mp3
 ota,"拙者、、、、、お主の耳タブを
-ハムハムしたいでパゴス!!",,otakuRaku-1.jpg
-choice8,,,
+ハムハムしたいでパゴス!!",,otakuRaku-1.jpg,sesyaonusi.mp3
+choice8,,,,

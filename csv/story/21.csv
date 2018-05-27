@@ -1,7 +1,7 @@
-name,text,back,face
+name,text,back,face,oto
 my,"なんで、せっかくの修学旅行、こいつと一緒の班なんだよ
-しかも二人、、、",,otaku.jpg
-ota,君と一緒で嬉しいパゴスーー,,otakuKi-2.jpg
-my,(こいつ、腹たつなー、滅びねーかな),,otakuKi-1.jpg
-ota,京都楽しみでパゴスね！！　何で移動するでパゴス?,,otakuKi-2.jpg
-choice4,,,
+しかも二人、、、",,otaku.jpg,
+ota,君と一緒で嬉しいパゴスーー,,otakuKi-2.jpg,kimito.mp3
+my,(こいつ、腹たつなー、滅びねーかな),,otakuKi-1.jpg,
+ota,京都楽しみでパゴスね！！　何で移動するでパゴス?,,otakuKi-2.jpg,kyoutotanosimi.mp3
+choice4,,,,

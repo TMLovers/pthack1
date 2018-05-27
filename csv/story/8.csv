@@ -1,8 +1,8 @@
-name,text,back,face
-my,(うぜーから、殴っておくか),CLASSROOM,otakuAi-1.jpg
-sound,べし,,otakuAi-1.jpg
+name,text,back,face,oto
+my,(うぜーから、殴っておくか),CLASSROOM,otakuAi-1.jpg,
+sound,べし,,otakuAi-1.jpg,
 ota,"Miguu yangu ni stinky.
 Miguu yangu ni stinky.
-Miguu yangu ni stinky.",,otakuDo-2
+Miguu yangu ni stinky.",,otakuDo-2,suwahiri2.mp3
 my,"(こいつ、急にスワヒリ語で
-喋り出したぞ、、、）",,otakuDo-2
+喋り出したぞ、、、）",,otakuDo-2,
