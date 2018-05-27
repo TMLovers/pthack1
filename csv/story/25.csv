@@ -1,6 +1,6 @@
-name,text,back,face
-my,クリスマスか、なんか切ない気持ち、、、,XMAS,
-ota,僕は君と過ごせて嬉しいパゴスよ,,otakuKi-2.jpg
-my,おお、そうか,,otakuKi-1.jpg
-ota,プレゼントは何が欲しいでパゴス？,,otakuRaku-2.jpg
-choice5,,,
+name,text,back,face,oto
+my,クリスマスか、なんか切ない気持ち、、、,XMAS,,
+ota,僕は君と過ごせて嬉しいパゴスよ,,otakuKi-2.jpg,bokuhakimito.mp3
+my,おお、そうか,,otakuKi-1.jpg,
+ota,プレゼントは何が欲しいでパゴス？,,otakuRaku-2.jpg,puresentoha.mp3
+choice5,,,,

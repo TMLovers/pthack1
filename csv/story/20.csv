@@ -1,12 +1,12 @@
-name,text,back,face
-my,(とりあえず、箸を目に刺そう),CLASSROOM,otakuAi-1.jpg
-sound,サク,,
-ota,お前、俺の正体に気づいたか？？,,あとでかきます
+name,text,back,face,oto
+my,(とりあえず、箸を目に刺そう),CLASSROOM,otakuAi-1.jpg,
+sound,サク,,,
+ota,お前、俺の正体に気づいたか？？,,otakuHashi-1.jpg,ottoomae.mp3
 my,"こいつ、痛みを感じないのか？？
-目に箸が刺さっているのに",,あとでかきます
+目に箸が刺さっているのに",,otakuHashi-1.jpg,
 ota,"バレては仕方がありませんねぇ
 あなたを生きては返すことはできません、、、
-では、",,あとでかきます
-ota,アデュー,,あとでかきます
-sound,パン！！,,あとでかきます
-sound,GAME OVER,,
+では、",,otakuHashi-1.jpg,bareteha.mp3
+ota,アデュー,,otakuHashi-2.jpg,
+sound,パン！！,,otakuHashi-2.jpg,
+sound,GAME OVER,,,

@@ -1,8 +1,8 @@
-name,text,back,face
-my,お前がくれるならなんでも嬉しいよ,XMAS,otaku.jpg
-ota,ほんとでパゴスか？？,,otakuKi-2.jpg
-ota,んじゃこれあげるでパゴス！！,,otakuRaku-1.jpg
-sound,ぬちゃ,,otakuRaku-1.jpg
-my,何これ？？,,otakuRaku-1.jpg
-ota,僕のへその緒でパゴス!!,,otakuRaku-2.jpg
-my,サンキューーーーー！！,,otakuRaku-1.jpg
+name,text,back,face,oto
+my,お前がくれるならなんでも嬉しいよ,XMAS,otaku.jpg,
+ota,ほんとでパゴスか？？,,otakuKi-2.jpg,honnto.mp3
+ota,んじゃこれあげるでパゴス！！,,otakuRaku-1.jpg,nnzyakore.mp3
+sound,ぬちゃ,,otakuRaku-1.jpg,
+my,何これ？？,,otakuRaku-1.jpg,
+ota,僕のへその緒でパゴス!!,,otakuRaku-2.jpg,hesonoo.mp3
+my,サンキューーーーー！！,,otakuRaku-1.jpg,
