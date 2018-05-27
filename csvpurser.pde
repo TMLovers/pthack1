@@ -58,6 +58,26 @@ class CsvPurser {
         }  
         return faces;
     }
+
+    String[] getChoice(ChoiceFileName file) {
+        String[] choices = {};
+        for(int i = 0; i < choiceDatas[file.ordinal()].getRowCount(); i++) {
+            choices = append(choices, choiceDatas[file.ordinal()].getString(i,0));
+        }  
+        return choices;
+    }
+
+    String[] getPoint(ChoiceFileName file) {
+        String[] points = {};
+        for(int i = 0; i < choiceDatas[file.ordinal()].getRowCount(); i++) {
+            points = append(points, choiceDatas[file.ordinal()].getString(i,0));
+        }  
+        return points;
+    }
+
+    int getChoiceFileSize(ChoiceFileName file){
+        return choiceDatas[file.ordinal()].getRowCount();
+    }
 }
 
 public enum StoryFileName {
