@@ -18,7 +18,10 @@ ChoiceFileName[] c_values = ChoiceFileName.values();
 
 String[] texts;
 String[] names;
+String[] backs;
 String[] faces;
+
+String backimg = "GRADUATION";
 
 void setup() {
     size(1366, 768);
@@ -27,18 +30,69 @@ void setup() {
     csvPureser.loadStoryFiles();
     csvPureser.loadChoiceFiles();
     textController = new TextController();
-    
-
     }
 
 void draw() {
     background(0);
-    background.show(backgroundImageName.GRADUATION);
+    //background.show(backgroundImageName.GRADUATION);
 
     texts = csvPureser.getText(s_values[s_order]);
     names = csvPureser.getName(s_values[s_order]);
+    backs = csvPureser.getBack(s_values[s_order]);
     faces = csvPureser.getFace(s_values[s_order]);
 
+    if (backs[index].length() == 0) {
+        switch(backimg){
+        case "GROUND":
+            background.show(backgroundImageName.GROUND);
+            break;
+        case "XMAS":
+            background.show(backgroundImageName.XMAS);
+            break;
+        case "CLASSROOM":
+            background.show(backgroundImageName.CLASSROOM);
+            break;
+        case "GRADUATION":
+            background.show(backgroundImageName.GRADUATION);
+            break;
+        case "SHRINE":
+            background.show(backgroundImageName.SHRINE);
+            break;
+        default:
+            println( "無理無理" ); // 実行されない
+            break;
+    }
+    }else{
+        switch(backs[index]){
+        case "GROUND":
+            background.show(backgroundImageName.GROUND);
+            backimg = "GROUND";
+            break;
+        case "XMAS":
+            background.show(backgroundImageName.XMAS);
+            backimg = "XMAS";
+            break;
+        case "CLASSROOM":
+            background.show(backgroundImageName.CLASSROOM);
+            backimg = "CLASSROOM";
+            break;
+        case "GRADUATION":
+            background.show(backgroundImageName.GRADUATION);
+            backimg = "GRADUATION";
+            break;
+        case "SHRINE":
+            background.show(backgroundImageName.SHRINE);
+            backimg = "SHRINE";
+            break;
+        default:
+            println( "ほれほれ" ); // 実行されない
+            break;
+    }
+    }
+
+    println(backs[index] + "***********");
+
+    /* otakuの表情 */
     switch(faces[index]){
         case "otaku.jpg":
             otaku.show(Emotion.OTAKU);
