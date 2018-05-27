@@ -18,6 +18,7 @@ ChoiceFileName[] c_values = ChoiceFileName.values();
 
 String[] texts;
 String[] names;
+String[] faces;
 
 void setup() {
     size(1366, 768);
@@ -33,10 +34,43 @@ void setup() {
 void draw() {
     background(0);
     background.show(backgroundImageName.GRADUATION);
-    otaku.show(Emotion.JOY2);
 
     texts = csvPureser.getText(s_values[s_order]);
     names = csvPureser.getName(s_values[s_order]);
+    faces = csvPureser.getFace(s_values[s_order]);
+
+    switch(faces[index]){
+        case "otaku.jpg":
+            otaku.show(Emotion.OTAKU);
+            break;
+        case "otakuRaku-1.jpg":
+            otaku.show(Emotion.ENJOY1);
+            break;
+        case "otakuRaku-2.jpg":
+            otaku.show(Emotion.ENJOY2);
+            break;
+        case "otakuKi-1.jpg":
+            otaku.show(Emotion.JOY1);
+            break;
+        case "otakuKi-2.jpg":
+            otaku.show(Emotion.JOY2);
+            break;
+        case "otakuDo-1.jpg":
+            otaku.show(Emotion.ANGER1);
+            break;
+        case "otakuDo-2.jpg":
+            otaku.show(Emotion.ANGER2);
+            break;
+        case "otakuAi-1.jpg":
+            otaku.show(Emotion.SAD1);
+            break;
+        case "otakuAi-2.jpg":
+            otaku.show(Emotion.SAD2);
+            break;
+        default:
+            println( "message 5" ); // 実行されない
+            break;
+    }
 
     if (names[index].indexOf("choice") != -1) {
         showChoice();
@@ -62,18 +96,15 @@ void keyPressed() {
   } else if (keyCode == DOWN) {
     textController.changeChoiceSelection(1);
   } else if (key == ' ') {
-    println(textController.getChoiceSelection());
 
     s_order++;
         c_order++;
     index = 0;
   } else if (key == ENTER){
     textController.refreshText();
+
     if (index == texts.length -1) {
-        
        if (names[index].indexOf("choice") != -1) {
-           println(textController.getChoiceSelection());
-           println(csvPureser.getChoiceFileSize(c_values[c_order]) + "でっっせ");
             switch(textController.getChoiceSelection()){
                 case 0:
                     s_order++;
@@ -103,12 +134,10 @@ void keyPressed() {
                 flag = false;
                 
             }else{
-                s_order++; 
-                
+                s_order++;                
             }
         skip_order = 0;     
        }
-        println(textController.getChoiceSelection());       
     }else{
         index++;
     }

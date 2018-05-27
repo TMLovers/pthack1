@@ -1,11 +1,11 @@
 class Character {
 
-    final int IMAGE_NUM = 2;
+    final int IMAGE_NUM = 9;
     PImage images[] = new PImage[IMAGE_NUM];
     CharactersName name;
 
     //Todo キャラクターを，真ん中に配置
-    int x = 0;
+    int x = 430;
     int y = 1;
 
     Character(CharactersName name) {
@@ -14,7 +14,7 @@ class Character {
 
     void loadImages() {
         for(int imageNum = 0; imageNum < IMAGE_NUM; imageNum++) {
-            images[imageNum] = loadImage("./character/" + this.name.getName() + "/" + this.name.getName() + str(imageNum) + ".jpg"); 
+            images[imageNum] = loadImage("./character/" + this.name.getName() + "/" + this.name.getName() + str(imageNum) + ".png"); 
         }
     }
 
@@ -24,12 +24,13 @@ class Character {
 }
 
 public enum Emotion {
-    JOY1,
-    JOY2,
-    ANGER1,
-    ANGER2,
+    OTAKU,
     SAD1,
     SAD2,
+    ANGER1,
+    ANGER2,
+    JOY1,
+    JOY2,
     ENJOY1,
     ENJOY2
 }
