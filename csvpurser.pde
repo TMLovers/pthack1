@@ -1,99 +1,141 @@
 class CsvPurser {
-    final int CSVFILE_NUM = 1;
-    Table csvDatas[] = new Table[CSVFILE_NUM];
+    final int STORY_FILE_NUM = 41;
+    final int CHOICE_FILE_NUM = 8;
+    final int GAME_FILE_NUM = 2;
+    Table storyDatas[] = new Table[STORY_FILE_NUM];
+    Table choiceDatas[] = new Table[CHOICE_FILE_NUM];
+    Table gameDatas[] = new Table[GAME_FILE_NUM];
 
     CsvPurser () {
     }
 
-    void loadCSVFiles() {
-        for(int csvNum = 0; csvNum < CSVFILE_NUM; csvNum++) {
-            csvDatas[csvNum] = loadTable("./csv/story" + str(csvNum) + ".csv");   
+    void loadStoryFiles() {
+        for(int csvNum = 0; csvNum < STORY_FILE_NUM; csvNum++) {
+            storyDatas[csvNum] = loadTable("./csv/story/" + str(csvNum) + ".csv");   
         }         
     }
 
-    String[] getName(CSVFileName file) {
+    void loadChoiceFiles() {
+        for(int csvNum = 0; csvNum < CHOICE_FILE_NUM; csvNum++) {
+            choiceDatas[csvNum] = loadTable("./csv/choice/choice" + str(csvNum) + ".csv");   
+        }         
+    }
+
+    void loadGameFiles() {
+        for(int csvNum = 0; csvNum < GAME_FILE_NUM; csvNum++) {
+            gameDatas[csvNum] = loadTable("./csv/game/game" + str(csvNum) + ".csv");   
+        }         
+    }
+
+    String[] getName(StoryFileName file) {
         String[] names = {};
-        for(int i = 1; i < csvDatas[file.ordinal()].getRowCount(); i++) {
-            names = append(names, csvDatas[file.ordinal()].getString(i,0));
+        for(int i = 1; i < storyDatas[file.ordinal()].getRowCount(); i++) {
+            names = append(names, storyDatas[file.ordinal()].getString(i,0));
         }  
         return names;
     }
 
-    String[] getText(CSVFileName file) {
+    String[] getText(StoryFileName file) {
         String[] texts = {};
-        for(int i = 1; i < csvDatas[file.ordinal()].getRowCount(); i++) {
-            texts = append(texts, csvDatas[file.ordinal()].getString(i,1));
+        for(int i = 1; i < storyDatas[file.ordinal()].getRowCount(); i++) {
+            texts = append(texts, storyDatas[file.ordinal()].getString(i,1));
         }  
         return texts;
     }
 
-    String[] getBack(CSVFileName file) {
+    String[] getBack(StoryFileName file) {
         String[] backs = {};
-        for(int i = 1; i < csvDatas[file.ordinal()].getRowCount(); i++) {
-            backs = append(backs, csvDatas[file.ordinal()].getString(i,2));
+        for(int i = 1; i < storyDatas[file.ordinal()].getRowCount(); i++) {
+            backs = append(backs, storyDatas[file.ordinal()].getString(i,2));
         }  
         return backs;
     }
 
-    String[] getFace(CSVFileName file) {
+    String[] getFace(StoryFileName file) {
         String[] faces = {};
-        for(int i = 1; i < csvDatas[file.ordinal()].getRowCount(); i++) {
-            faces = append(faces, csvDatas[file.ordinal()].getString(i,3));
+        for(int i = 1; i < storyDatas[file.ordinal()].getRowCount(); i++) {
+            faces = append(faces, storyDatas[file.ordinal()].getString(i,3));
         }  
         return faces;
     }
+
+    String[] getChoice(ChoiceFileName file) {
+        String[] choices = {};
+        for(int i = 0; i < choiceDatas[file.ordinal()].getRowCount(); i++) {
+            choices = append(choices, choiceDatas[file.ordinal()].getString(i,0));
+        }  
+        return choices;
+    }
+
+    String[] getPoint(ChoiceFileName file) {
+        String[] points = {};
+        for(int i = 0; i < choiceDatas[file.ordinal()].getRowCount(); i++) {
+            points = append(points, choiceDatas[file.ordinal()].getString(i,0));
+        }  
+        return points;
+    }
+
+    int getChoiceFileSize(ChoiceFileName file){
+        return choiceDatas[file.ordinal()].getRowCount();
+    }
 }
 
-public enum CSVFileName {
+public enum StoryFileName {
     INTRO,
     SEKIGAE,
-    CHOICE1,
     SEKIGAE1,
     SEKIGAE2,
     SEKIGAE3,
     ZYUGYOU,
-    CHOICE2,
     ZYUGYOU1,
     ZYUGYOU2,
     ZYUGYOU3,
     TAIKUSAI,
-    GAME1,
     TAIKUSAI1,
     TAIKUSAI2,
     TAIKUSAI3,
     GAKUSAI,
-    GAME2,
     GAKUSAI1,
     GAKUSAI2,
     GAKUSAI3,
     HIRUYASUMI,
-    CHOICE3,
     HIRUYASUMI1,
     HIRUYASUMI2,
     HIRUYASUMI3,
-    HIRUYASUMI4,
     SYUGAKURYOKO,
-    CHOICE4,
     SYUGAKURYOKO1,
     SYUGAKURYOKO2,
     SYUGAKURYOKO3,
     KURISUMASU,
-    CHOICE5,
     KURISUMASU1,
     KURISUMASU2,
     KURISUMASU3,
     KURISUMASU4,
     SYOGATU,
-    CHOICE6,
     SYOGATU1,
     SYOGATU2,
     SYOGATU3,
     ZYUKEN,
-    CHOICE7,
     ZYUKEN1,
     ZYUKEN2,
     ZYUKEN3,
     SOTUGYOUSIKI,
-    LAST,
-    LAST1
+    LAST1,
+    BADEND
+}
+
+public enum ChoiceFileName{
+    CHOICE1,
+    CHOICE2,
+    CHOICE3,
+    CHOICE4,
+    CHOICE5,
+    CHOICE6,
+    CHOICE7,
+    CHOICE8
+}
+
+public enum GameFileName{
+    GAME1,
+    GAME2
 }
