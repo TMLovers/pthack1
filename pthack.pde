@@ -1,6 +1,6 @@
 import ddf.minim.*; // minimライブラリのインポート
-Minim minim;         // Minim型変数であるminimの宣言
-AudioPlayer player;  // サウンドデータ格納用の変数
+Minim minim;
+AudioPlayer player;
 Background background = new Background();
 BackgroundImageName backgroundImageName;
 TextController textController;
@@ -43,20 +43,18 @@ void setup() {
   csvPureser.loadGameFiles();
   textController = new TextController();
   soundgame = new SoundGame();
-  minim = new Minim(this);              // 初期化
+  minim = new Minim(this);
   setupSoundGameAudio();
-
 }
 
 void draw() {
   background(0);
-  //background.show(backgroundImageName.GRADUATION);
 
-  texts = csvPureser.getText(s_values[s_order]);
-  names = csvPureser.getName(s_values[s_order]);
-  backs = csvPureser.getBack(s_values[s_order]);
-  faces = csvPureser.getFace(s_values[s_order]);
-  voices = csvPureser.getVoice(s_values[s_order]);
+  names = csvPureser.getStoryDatas(s_values[s_order], 0);
+  texts = csvPureser.getStoryDatas(s_values[s_order], 1);
+  backs = csvPureser.getStoryDatas(s_values[s_order], 2);
+  faces = csvPureser.getStoryDatas(s_values[s_order], 3);
+  voices = csvPureser.getStoryDatas(s_values[s_order], 4);
 
   /* 背景画像 */
   if (backs[index].length() == 0) {
@@ -166,7 +164,6 @@ void draw() {
 
         if (soundgame.isFinished() == true) {
          game1_point = soundgame.getResult();
-         stopSoundGameAudio();
 
          if(game1_point >= 0 && game1_point < 51){
            game1_result = 2;
@@ -190,7 +187,7 @@ void draw() {
           break;
 
           default:
-          showName(names[index]); // 実行されない
+          showName(names[index]);
           break;
         }
       }
@@ -226,6 +223,8 @@ void draw() {
               speak_count = 0;
 
               if (index == texts.length -1) {
+
+                /* 選択肢を表示する場合 */
                 if (names[index].indexOf("choice") != -1) {
                   switch(textController.getChoiceSelection()){
                     case 0:
@@ -247,48 +246,53 @@ void draw() {
                     default:
                     break;
                   }
+
                   index = 0;
                   skip_order = csvPureser.getChoiceFileSize(c_values[c_order]) - textController.getChoiceSelection();
                   c_order++;
                   flag = true;
-                  
+                /* ここまで選択肢を表示する場合 */  
+
+                /* ゲームを表示する場合 */
                   }else if (names[index].indexOf("game1") != -1) {
                     stopSoundGameAudio();
                     textSize(48);
-                  switch(game1_result){
-                    case 0:
-                    s_order++;
-                    break;
+                    switch(game1_result){
+                      case 0:
+                      s_order++;
+                      break;
 
-                    case 1:
-                    s_order = s_order + 2;
-                    break;
+                      case 1:
+                      s_order = s_order + 2;
+                      break;
 
-                    case 2:
-                    s_order = s_order + 3;
-                    break;
+                      case 2:
+                      s_order = s_order + 3;
+                      break;
 
-                    default:
-                    break;
-                  }
-                  index = 0;
-                  skip_order = csvPureser.getGameFileSize(g_values[g_order]) - game1_result;
-                  g_order++;
-                  flag = true;
-                  
-                  }else{
-                    index = 0;
-                    if (flag == true) {
-                      s_order = s_order + skip_order;
-                      flag = false;
-                      }else{
-                        s_order++;
-                      }
-                      skip_order = 0;
+                      default:
+                      break;
                     }
-                    
+
+                    index = 0;
+                    skip_order = csvPureser.getGameFileSize(g_values[g_order]) - game1_result;
+                    g_order++;
+                    flag = true;
+                /* ここまでゲームを表示する場合 */
+
                 }else{
-                  index++;
-                }
+                  index = 0;
+                  if (flag == true) {
+                    s_order = s_order + skip_order;
+                    flag = false;
+                    }else{
+                      s_order++;
+                    }
+                    skip_order = 0;
+                  }
+                  
+              }else{
+                index++;
               }
             }
+          }
