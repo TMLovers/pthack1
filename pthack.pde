@@ -13,7 +13,8 @@ int index = 0;
 int skip_order = 0;
 
 int speak_count = 0;
-int game1_count = 0;
+int game1_point = 0;
+int game1_result = 0;
 boolean flag = false;
 
 int s_order = StoryFileName.INTRO.ordinal();
@@ -21,6 +22,9 @@ StoryFileName[] s_values = StoryFileName.values();
 
 int c_order = ChoiceFileName.CHOICE1.ordinal();
 ChoiceFileName[] c_values = ChoiceFileName.values();
+
+int g_order = GameFileName.GAME1.ordinal();
+GameFileName[] g_values = GameFileName.values();
 
 String[] texts;
 String[] names;
@@ -36,6 +40,7 @@ void setup() {
   otaku.loadImages();
   csvPureser.loadStoryFiles();
   csvPureser.loadChoiceFiles();
+  csvPureser.loadGameFiles();
   textController = new TextController();
   soundgame = new SoundGame();
   minim = new Minim(this);              // 初期化
@@ -161,7 +166,15 @@ void draw() {
         soundgame.show();
 
         if (soundgame.isFinished() == true) {
-        soundgame.getResult();
+         game1_point = soundgame.getResult();
+
+         if(game1_point >= 0 && game1_point < 51){
+           game1_result = 2;
+         }else if (game1_point >= 51 && game1_point < 121) {
+           game1_result = 1;
+         }else if (game1_point >= 121){
+           game1_result = 0;
+         }
         }
       //---------------------------------
 
@@ -239,6 +252,29 @@ void draw() {
                   skip_order = csvPureser.getChoiceFileSize(c_values[c_order]) - textController.getChoiceSelection();
                   c_order++;
                   flag = true;
+                  
+                  }else if (names[index].indexOf("game1") != -1) {
+                  switch(game1_result){
+                    case 0:
+                    s_order++;
+                    break;
+
+                    case 1:
+                    s_order = s_order + 2;
+                    break;
+
+                    case 2:
+                    s_order = s_order + 3;
+                    break;
+
+                    default:
+                    break;
+                  }
+                  index = 0;
+                  skip_order = csvPureser.getGameFileSize(g_values[g_order]) - game1_result;
+                  g_order++;
+                  flag = true;
+                  
                   }else{
                     index = 0;
                     if (flag == true) {
@@ -249,8 +285,9 @@ void draw() {
                       }
                       skip_order = 0;
                     }
-                    }else{
-                      index++;
-                    }
-                  }
+                    
+                }else{
+                  index++;
                 }
+              }
+            }

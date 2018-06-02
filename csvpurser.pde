@@ -75,7 +75,7 @@ class CsvPurser {
         return choices;
     }
 
-    String[] getPoint(ChoiceFileName file) {
+    String[] getPoint(GameFileName file) {
         String[] points = {};
         for(int i = 0; i < choiceDatas[file.ordinal()].getRowCount(); i++) {
             points = append(points, choiceDatas[file.ordinal()].getString(i,0));
@@ -85,6 +85,10 @@ class CsvPurser {
 
     int getChoiceFileSize(ChoiceFileName file){
         return choiceDatas[file.ordinal()].getRowCount();
+    }
+
+    int getGameFileSize(GameFileName file){
+        return gameDatas[file.ordinal()].getRowCount();
     }
 }
 
