@@ -26,11 +26,7 @@ ChoiceFileName[] c_values = ChoiceFileName.values();
 int g_order = GameFileName.GAME1.ordinal();
 GameFileName[] g_values = GameFileName.values();
 
-String[] texts;
-String[] names;
-String[] backs;
-String[] faces;
-String[] voices;
+String[] texts, names, backs, faces, voices;
 
 String backimg = "GRADUATION";
 
@@ -56,105 +52,8 @@ void draw() {
   faces = csvPureser.getStoryDatas(s_values[s_order], 3);
   voices = csvPureser.getStoryDatas(s_values[s_order], 4);
 
-  /* 背景画像 */
-  if (backs[index].length() == 0) {
-    switch(backimg){
-      case "GROUND":
-      background.show(backgroundImageName.GROUND);
-      break;
-
-      case "XMAS":
-      background.show(backgroundImageName.XMAS);
-      break;
-
-      case "CLASSROOM":
-      background.show(backgroundImageName.CLASSROOM);
-      break;
-
-      case "GRADUATION":
-      background.show(backgroundImageName.GRADUATION);
-      break;
-
-      case "SHRINE":
-      background.show(backgroundImageName.SHRINE);
-      break;
-
-      default:
-      break;
-    }
-    }else{
-      switch(backs[index]){
-        case "GROUND":
-        background.show(backgroundImageName.GROUND);
-        backimg = "GROUND";
-        break;
-
-        case "XMAS":
-        background.show(backgroundImageName.XMAS);
-        backimg = "XMAS";
-        break;
-
-        case "CLASSROOM":
-        background.show(backgroundImageName.CLASSROOM);
-        backimg = "CLASSROOM";
-        break;
-
-        case "GRADUATION":
-        background.show(backgroundImageName.GRADUATION);
-        backimg = "GRADUATION";
-        break;
-
-        case "SHRINE":
-        background.show(backgroundImageName.SHRINE);
-        backimg = "SHRINE";
-        break;
-
-        default:
-        break;
-      }
-    }
-
-    /* otakuの表情 */
-    switch(faces[index]){
-      case "otaku.jpg":
-      otaku.show(Emotion.OTAKU);
-      break;
-
-      case "otakuRaku-1.jpg":
-      otaku.show(Emotion.ENJOY1);
-      break;
-
-      case "otakuRaku-2.jpg":
-      otaku.show(Emotion.ENJOY2);
-      break;
-
-      case "otakuKi-1.jpg":
-      otaku.show(Emotion.JOY1);
-      break;
-
-      case "otakuKi-2.jpg":
-      otaku.show(Emotion.JOY2);
-      break;
-
-      case "otakuDo-1.jpg":
-      otaku.show(Emotion.ANGER1);
-      break;
-
-      case "otakuDo-2.jpg":
-      otaku.show(Emotion.ANGER2);
-      break;
-
-      case "otakuAi-1.jpg":
-      otaku.show(Emotion.SAD1);
-      break;
-
-      case "otakuAi-2.jpg":
-      otaku.show(Emotion.SAD2);
-      break;
-
-      default:
-      break;
-    }
+  showBackground(backs[index]);
+  showOtaku(faces[index]);
 
     if (names[index].indexOf("choice") != -1) {
       showChoice();
@@ -210,6 +109,108 @@ void draw() {
 
       void showName(String text) {
         textController.showName(text);
+      }
+
+      void showBackground(String img){
+        if (backs[index].length() == 0) {
+          switch(backimg){
+            case "GROUND":
+            background.show(backgroundImageName.GROUND);
+            break;
+
+            case "XMAS":
+            background.show(backgroundImageName.XMAS);
+            break;
+
+            case "CLASSROOM":
+            background.show(backgroundImageName.CLASSROOM);
+            break;
+
+            case "GRADUATION":
+            background.show(backgroundImageName.GRADUATION);
+            break;
+
+            case "SHRINE":
+            background.show(backgroundImageName.SHRINE);
+            break;
+
+            default:
+            break;
+          }
+        }else{
+          switch(backs[index]){
+            case "GROUND":
+            background.show(backgroundImageName.GROUND);
+            backimg = "GROUND";
+            break;
+
+            case "XMAS":
+            background.show(backgroundImageName.XMAS);
+            backimg = "XMAS";
+            break;
+
+            case "CLASSROOM":
+            background.show(backgroundImageName.CLASSROOM);
+            backimg = "CLASSROOM";
+            break;
+
+            case "GRADUATION":
+            background.show(backgroundImageName.GRADUATION);
+            backimg = "GRADUATION";
+            break;
+
+            case "SHRINE":
+            background.show(backgroundImageName.SHRINE);
+            backimg = "SHRINE";
+            break;
+
+            default:
+            break;
+          }
+        }   
+      }
+
+      void showOtaku(String faces){
+        switch(faces){
+          case "otaku.jpg":
+          otaku.show(Emotion.OTAKU);
+          break;
+
+          case "otakuRaku-1.jpg":
+          otaku.show(Emotion.ENJOY1);
+          break;
+
+          case "otakuRaku-2.jpg":
+          otaku.show(Emotion.ENJOY2);
+          break;
+
+          case "otakuKi-1.jpg":
+          otaku.show(Emotion.JOY1);
+          break;
+
+          case "otakuKi-2.jpg":
+          otaku.show(Emotion.JOY2);
+          break;
+
+          case "otakuDo-1.jpg":
+          otaku.show(Emotion.ANGER1);
+          break;
+
+          case "otakuDo-2.jpg":
+          otaku.show(Emotion.ANGER2);
+          break;
+
+          case "otakuAi-1.jpg":
+          otaku.show(Emotion.SAD1);
+          break;
+
+          case "otakuAi-2.jpg":
+          otaku.show(Emotion.SAD2);
+          break;
+
+          default:
+          break;
+        }
       }
 
       void keyPressed() {
