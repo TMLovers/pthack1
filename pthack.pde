@@ -14,7 +14,7 @@ int skip_order = 0;
 
 int speak_count = 0;
 int game1_point = 0;
-int game1_result = 0;
+int game1_result = 2;
 boolean flag = false;
 
 int s_order = StoryFileName.INTRO.ordinal();
@@ -162,11 +162,11 @@ void draw() {
       showChoice();
       
       }else if(names[index].indexOf("game1") != -1){
-       //-------------To Do------------- 
         soundgame.show();
 
         if (soundgame.isFinished() == true) {
          game1_point = soundgame.getResult();
+         stopSoundGameAudio();
 
          if(game1_point >= 0 && game1_point < 51){
            game1_result = 2;
@@ -176,7 +176,6 @@ void draw() {
            game1_result = 0;
          }
         }
-      //---------------------------------
 
       }else{
         showText(texts[index]);
@@ -254,6 +253,8 @@ void draw() {
                   flag = true;
                   
                   }else if (names[index].indexOf("game1") != -1) {
+                    stopSoundGameAudio();
+                    textSize(48);
                   switch(game1_result){
                     case 0:
                     s_order++;
