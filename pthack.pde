@@ -13,7 +13,7 @@ int index = 0;
 int skip_order = 0;
 
 int speak_count = 0;
-
+int game1_count = 0;
 boolean flag = false;
 
 int s_order = StoryFileName.INTRO.ordinal();
@@ -77,7 +77,6 @@ void draw() {
       break;
 
       default:
-      println( "無理無理" ); // 実行されない
       break;
     }
     }else{
@@ -108,7 +107,6 @@ void draw() {
         break;
 
         default:
-        println( "ほれほれ" ); // 実行されない
         break;
       }
     }
@@ -152,31 +150,36 @@ void draw() {
       break;
 
       default:
-      println( "message 5" ); // 実行されない
       break;
     }
 
     if (names[index].indexOf("choice") != -1) {
       showChoice();
+      
       }else if(names[index].indexOf("game1") != -1){
         soundgame.show();
-        }else{
-          showText(texts[index]);
 
-          switch(names[index]){
-            case "my":
-            showName("わたし");
-            break;
-
-            case "ota":
-            showName("家畜");
-            break;
-
-            default:
-            showName(names[index]); // 実行されない
-            break;
-          }
+        if (soundgame.isFinished() == true) {
+        soundgame.getResult();
         }
+
+      }else{
+        showText(texts[index]);
+
+        switch(names[index]){
+          case "my":
+          showName("わたし");
+          break;
+
+          case "ota":
+          showName("家畜");
+          break;
+
+          default:
+          showName(names[index]); // 実行されない
+          break;
+        }
+      }
 
         if(voices[index].length() != 0 && speak_count == 0){
           player = minim.loadFile("./voice/" + voices[index]);
@@ -228,7 +231,6 @@ void draw() {
                     break;
 
                     default:
-                    println( "message 5" ); // 実行されない
                     break;
                   }
                   index = 0;
