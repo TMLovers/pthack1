@@ -157,11 +157,13 @@ void draw() {
       showChoice();
       
       }else if(names[index].indexOf("game1") != -1){
+       //-------------To Do------------- 
         soundgame.show();
 
         if (soundgame.isFinished() == true) {
         soundgame.getResult();
         }
+      //---------------------------------
 
       }else{
         showText(texts[index]);
