@@ -254,45 +254,45 @@ void draw() {
                 /* ここまで選択肢を表示する場合 */  
 
                 /* ゲームを表示する場合 */
-                  }else if (names[index].indexOf("game1") != -1) {
-                    stopSoundGameAudio();
-                    textSize(48);
-                    switch(game1_result){
-                      case 0:
-                      s_order++;
-                      break;
+                }else if (names[index].indexOf("game1") != -1) {
+                  stopSoundGameAudio();
+                  textSize(48);
+                  switch(game1_result){
+                    case 0:
+                    s_order++;
+                    break;
 
-                      case 1:
-                      s_order = s_order + 2;
-                      break;
+                    case 1:
+                    s_order = s_order + 2;
+                    break;
 
-                      case 2:
-                      s_order = s_order + 3;
-                      break;
+                    case 2:
+                    s_order = s_order + 3;
+                    break;
 
-                      default:
-                      break;
-                    }
-
-                    index = 0;
-                    skip_order = csvPureser.getGameFileSize(g_values[g_order]) - game1_result;
-                    g_order++;
-                    flag = true;
-                /* ここまでゲームを表示する場合 */
-
-                }else{
-                  index = 0;
-                  if (flag == true) {
-                    s_order = s_order + skip_order;
-                    flag = false;
-                    }else{
-                      s_order++;
-                    }
-                    skip_order = 0;
+                    default:
+                    break;
                   }
-                  
+
+                  index = 0;
+                  skip_order = csvPureser.getGameFileSize(g_values[g_order]) - game1_result;
+                  g_order++;
+                  flag = true;
+              /* ここまでゲームを表示する場合 */
+
               }else{
-                index++;
-              }
+                index = 0;
+                if (flag == true) {
+                  s_order = s_order + skip_order;
+                  flag = false;
+                  }else{
+                    s_order++;
+                  }
+                  skip_order = 0;
+                }
+                
+            }else{
+              index++;
             }
           }
+        }
