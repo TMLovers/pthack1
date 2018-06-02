@@ -12,3 +12,7 @@ void refreshSoundGameAudio(){
     dhuPlayer.rewind();
     huPlayer.rewind();
 }
+
+void stopSoundGameAudio(){
+    musicPlayer.close();
+}
