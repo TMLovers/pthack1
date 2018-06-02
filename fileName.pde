@@ -1,0 +1,59 @@
+public enum StoryFileName {
+    INTRO,
+    SEKIGAE,
+    SEKIGAE1,
+    SEKIGAE2,
+    SEKIGAE3,
+    ZYUGYOU,
+    ZYUGYOU1,
+    ZYUGYOU2,
+    ZYUGYOU3,
+    TAIKUSAI,
+    TAIKUSAI1,
+    TAIKUSAI2,
+    TAIKUSAI3,
+    GAKUSAI,
+    GAKUSAI1,
+    GAKUSAI2,
+    GAKUSAI3,
+    HIRUYASUMI,
+    HIRUYASUMI1,
+    HIRUYASUMI2,
+    HIRUYASUMI3,
+    SYUGAKURYOKO,
+    SYUGAKURYOKO1,
+    SYUGAKURYOKO2,
+    SYUGAKURYOKO3,
+    KURISUMASU,
+    KURISUMASU1,
+    KURISUMASU2,
+    KURISUMASU3,
+    KURISUMASU4,
+    SYOGATU,
+    SYOGATU1,
+    SYOGATU2,
+    SYOGATU3,
+    ZYUKEN,
+    ZYUKEN1,
+    ZYUKEN2,
+    ZYUKEN3,
+    SOTUGYOUSIKI,
+    LAST1,
+    BADEND
+}
+
+public enum ChoiceFileName{
+    CHOICE1,
+    CHOICE2,
+    CHOICE3,
+    CHOICE4,
+    CHOICE5,
+    CHOICE6,
+    CHOICE7,
+    CHOICE8
+}
+
+public enum GameFileName{
+    GAME1,
+    GAME2
+}

@@ -27,35 +27,7 @@ class SoundGame {
         showGauge();
         showScore();
         musicPlayer.play();
-
-        if (keyPressed == true) {
-            switch (key) {
-            case 'd' :
-                if (isHit(1)==true) {
-                    dhuPlayer.play();
-                    refreshSoundGameAudio();
-                    println("d");
-                }else{
-                    println("miss");
-                }
-            break;
-
-            case 'f' :
-                if (isHit(2)==true) {
-                    huPlayer.play();
-                    refreshSoundGameAudio();
-                    println("f");
-                }else{
-                    println("miss");
-                }
-            break;
-
-            default :
-                
-            break;	
-        }
-        }
-        
+        hitDhu();
     }
 
     void showScore() {
@@ -104,6 +76,35 @@ class SoundGame {
     void changeGauge(int dx){
         if(gaugeWidth + dx <= 1150 - gaugeX && gaugeWidth + dx >= 0){
             gaugeWidth += dx;
+        }
+    }
+
+    void hitDhu(){
+        if (keyPressed == true) {
+            switch (key) {
+            case 'd' :
+                if (isHit(1)==true) {
+                    dhuPlayer.play();
+                    refreshSoundGameAudio();
+                    println("d");
+                }else{
+                    println("miss");
+                }
+            break;
+
+            case 'f' :
+                if (isHit(2)==true) {
+                    huPlayer.play();
+                    refreshSoundGameAudio();
+                    println("f");
+                }else{
+                    println("miss");
+                }
+            break;
+
+            default : 
+            break;	
+            }
         }
     }
 

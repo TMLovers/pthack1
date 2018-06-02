@@ -9,6 +9,7 @@ class CsvPurser {
     CsvPurser () {
     }
 
+    /* ファイルの読み込み系関数群 */
     void loadStoryFiles() {
         for(int csvNum = 0; csvNum < STORY_FILE_NUM; csvNum++) {
             storyDatas[csvNum] = loadTable("./csv/story/" + str(csvNum) + ".csv");   
@@ -26,45 +27,20 @@ class CsvPurser {
             gameDatas[csvNum] = loadTable("./csv/game/game" + str(csvNum) + ".csv");   
         }         
     }
+    /* ここまでファイルの読み込み系関数群 */
 
-    String[] getName(StoryFileName file) {
-        String[] names = {};
+    /*
+    * Storyフォルダをパースする
+    * @param:file ストーリーファイルの名前（列挙型のやつ）
+    * @param:column_number 0->名前、1->文章、2->背景画像、3->おたくの表情、4->音声
+    * return 指定したカラムのデータ
+    */
+    String[] getStoryDatas(StoryFileName file, int column_number) {
+        String[] datas = {};
         for(int i = 1; i < storyDatas[file.ordinal()].getRowCount(); i++) {
-            names = append(names, storyDatas[file.ordinal()].getString(i,0));
+            datas = append(datas, storyDatas[file.ordinal()].getString(i,column_number));
         }  
-        return names;
-    }
-
-    String[] getText(StoryFileName file) {
-        String[] texts = {};
-        for(int i = 1; i < storyDatas[file.ordinal()].getRowCount(); i++) {
-            texts = append(texts, storyDatas[file.ordinal()].getString(i,1));
-        }  
-        return texts;
-    }
-
-    String[] getBack(StoryFileName file) {
-        String[] backs = {};
-        for(int i = 1; i < storyDatas[file.ordinal()].getRowCount(); i++) {
-            backs = append(backs, storyDatas[file.ordinal()].getString(i,2));
-        }  
-        return backs;
-    }
-
-    String[] getFace(StoryFileName file) {
-        String[] faces = {};
-        for(int i = 1; i < storyDatas[file.ordinal()].getRowCount(); i++) {
-            faces = append(faces, storyDatas[file.ordinal()].getString(i,3));
-        }  
-        return faces;
-    }
-
-    String[] getVoice(StoryFileName file) {
-        String[] voices = {};
-        for(int i = 1; i < storyDatas[file.ordinal()].getRowCount(); i++) {
-            voices = append(voices, storyDatas[file.ordinal()].getString(i,4));
-        }  
-        return voices;
+        return datas;
     }
 
     String[] getChoice(ChoiceFileName file) {
@@ -90,64 +66,4 @@ class CsvPurser {
     int getGameFileSize(GameFileName file){
         return gameDatas[file.ordinal()].getRowCount();
     }
-}
-
-public enum StoryFileName {
-    INTRO,
-    SEKIGAE,
-    SEKIGAE1,
-    SEKIGAE2,
-    SEKIGAE3,
-    ZYUGYOU,
-    ZYUGYOU1,
-    ZYUGYOU2,
-    ZYUGYOU3,
-    TAIKUSAI,
-    TAIKUSAI1,
-    TAIKUSAI2,
-    TAIKUSAI3,
-    GAKUSAI,
-    GAKUSAI1,
-    GAKUSAI2,
-    GAKUSAI3,
-    HIRUYASUMI,
-    HIRUYASUMI1,
-    HIRUYASUMI2,
-    HIRUYASUMI3,
-    SYUGAKURYOKO,
-    SYUGAKURYOKO1,
-    SYUGAKURYOKO2,
-    SYUGAKURYOKO3,
-    KURISUMASU,
-    KURISUMASU1,
-    KURISUMASU2,
-    KURISUMASU3,
-    KURISUMASU4,
-    SYOGATU,
-    SYOGATU1,
-    SYOGATU2,
-    SYOGATU3,
-    ZYUKEN,
-    ZYUKEN1,
-    ZYUKEN2,
-    ZYUKEN3,
-    SOTUGYOUSIKI,
-    LAST1,
-    BADEND
-}
-
-public enum ChoiceFileName{
-    CHOICE1,
-    CHOICE2,
-    CHOICE3,
-    CHOICE4,
-    CHOICE5,
-    CHOICE6,
-    CHOICE7,
-    CHOICE8
-}
-
-public enum GameFileName{
-    GAME1,
-    GAME2
 }

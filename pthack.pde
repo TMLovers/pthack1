@@ -1,6 +1,6 @@
 import ddf.minim.*; // minimライブラリのインポート
-Minim minim;         // Minim型変数であるminimの宣言
-AudioPlayer player;  // サウンドデータ格納用の変数
+Minim minim;
+AudioPlayer player;
 Background background = new Background();
 BackgroundImageName backgroundImageName;
 TextController textController;
@@ -26,11 +26,7 @@ ChoiceFileName[] c_values = ChoiceFileName.values();
 int g_order = GameFileName.GAME1.ordinal();
 GameFileName[] g_values = GameFileName.values();
 
-String[] texts;
-String[] names;
-String[] backs;
-String[] faces;
-String[] voices;
+String[] texts, names, backs, faces, voices;
 
 String backimg = "GRADUATION";
 
@@ -43,120 +39,21 @@ void setup() {
   csvPureser.loadGameFiles();
   textController = new TextController();
   soundgame = new SoundGame();
-  minim = new Minim(this);              // 初期化
+  minim = new Minim(this);
   setupSoundGameAudio();
-
 }
 
 void draw() {
   background(0);
-  //background.show(backgroundImageName.GRADUATION);
 
-  texts = csvPureser.getText(s_values[s_order]);
-  names = csvPureser.getName(s_values[s_order]);
-  backs = csvPureser.getBack(s_values[s_order]);
-  faces = csvPureser.getFace(s_values[s_order]);
-  voices = csvPureser.getVoice(s_values[s_order]);
+  names = csvPureser.getStoryDatas(s_values[s_order], 0);
+  texts = csvPureser.getStoryDatas(s_values[s_order], 1);
+  backs = csvPureser.getStoryDatas(s_values[s_order], 2);
+  faces = csvPureser.getStoryDatas(s_values[s_order], 3);
+  voices = csvPureser.getStoryDatas(s_values[s_order], 4);
 
-  /* 背景画像 */
-  if (backs[index].length() == 0) {
-    switch(backimg){
-      case "GROUND":
-      background.show(backgroundImageName.GROUND);
-      break;
-
-      case "XMAS":
-      background.show(backgroundImageName.XMAS);
-      break;
-
-      case "CLASSROOM":
-      background.show(backgroundImageName.CLASSROOM);
-      break;
-
-      case "GRADUATION":
-      background.show(backgroundImageName.GRADUATION);
-      break;
-
-      case "SHRINE":
-      background.show(backgroundImageName.SHRINE);
-      break;
-
-      default:
-      break;
-    }
-    }else{
-      switch(backs[index]){
-        case "GROUND":
-        background.show(backgroundImageName.GROUND);
-        backimg = "GROUND";
-        break;
-
-        case "XMAS":
-        background.show(backgroundImageName.XMAS);
-        backimg = "XMAS";
-        break;
-
-        case "CLASSROOM":
-        background.show(backgroundImageName.CLASSROOM);
-        backimg = "CLASSROOM";
-        break;
-
-        case "GRADUATION":
-        background.show(backgroundImageName.GRADUATION);
-        backimg = "GRADUATION";
-        break;
-
-        case "SHRINE":
-        background.show(backgroundImageName.SHRINE);
-        backimg = "SHRINE";
-        break;
-
-        default:
-        break;
-      }
-    }
-
-    /* otakuの表情 */
-    switch(faces[index]){
-      case "otaku.jpg":
-      otaku.show(Emotion.OTAKU);
-      break;
-
-      case "otakuRaku-1.jpg":
-      otaku.show(Emotion.ENJOY1);
-      break;
-
-      case "otakuRaku-2.jpg":
-      otaku.show(Emotion.ENJOY2);
-      break;
-
-      case "otakuKi-1.jpg":
-      otaku.show(Emotion.JOY1);
-      break;
-
-      case "otakuKi-2.jpg":
-      otaku.show(Emotion.JOY2);
-      break;
-
-      case "otakuDo-1.jpg":
-      otaku.show(Emotion.ANGER1);
-      break;
-
-      case "otakuDo-2.jpg":
-      otaku.show(Emotion.ANGER2);
-      break;
-
-      case "otakuAi-1.jpg":
-      otaku.show(Emotion.SAD1);
-      break;
-
-      case "otakuAi-2.jpg":
-      otaku.show(Emotion.SAD2);
-      break;
-
-      default:
-      break;
-    }
+  showBackground(backs[index]);
+  showOtaku(faces[index]);
 
     if (names[index].indexOf("choice") != -1) {
       showChoice();
@@ -166,7 +63,6 @@ void draw() {
 
         if (soundgame.isFinished() == true) {
          game1_point = soundgame.getResult();
-         stopSoundGameAudio();
 
          if(game1_point >= 0 && game1_point < 51){
            game1_result = 2;
@@ -190,7 +86,7 @@ void draw() {
           break;
 
           default:
-          showName(names[index]); // 実行されない
+          showName(names[index]);
           break;
         }
       }
@@ -215,6 +111,108 @@ void draw() {
         textController.showName(text);
       }
 
+      void showBackground(String img){
+        if (backs[index].length() == 0) {
+          switch(backimg){
+            case "GROUND":
+            background.show(backgroundImageName.GROUND);
+            break;
+
+            case "XMAS":
+            background.show(backgroundImageName.XMAS);
+            break;
+
+            case "CLASSROOM":
+            background.show(backgroundImageName.CLASSROOM);
+            break;
+
+            case "GRADUATION":
+            background.show(backgroundImageName.GRADUATION);
+            break;
+
+            case "SHRINE":
+            background.show(backgroundImageName.SHRINE);
+            break;
+
+            default:
+            break;
+          }
+        }else{
+          switch(backs[index]){
+            case "GROUND":
+            background.show(backgroundImageName.GROUND);
+            backimg = "GROUND";
+            break;
+
+            case "XMAS":
+            background.show(backgroundImageName.XMAS);
+            backimg = "XMAS";
+            break;
+
+            case "CLASSROOM":
+            background.show(backgroundImageName.CLASSROOM);
+            backimg = "CLASSROOM";
+            break;
+
+            case "GRADUATION":
+            background.show(backgroundImageName.GRADUATION);
+            backimg = "GRADUATION";
+            break;
+
+            case "SHRINE":
+            background.show(backgroundImageName.SHRINE);
+            backimg = "SHRINE";
+            break;
+
+            default:
+            break;
+          }
+        }   
+      }
+
+      void showOtaku(String faces){
+        switch(faces){
+          case "otaku.jpg":
+          otaku.show(Emotion.OTAKU);
+          break;
+
+          case "otakuRaku-1.jpg":
+          otaku.show(Emotion.ENJOY1);
+          break;
+
+          case "otakuRaku-2.jpg":
+          otaku.show(Emotion.ENJOY2);
+          break;
+
+          case "otakuKi-1.jpg":
+          otaku.show(Emotion.JOY1);
+          break;
+
+          case "otakuKi-2.jpg":
+          otaku.show(Emotion.JOY2);
+          break;
+
+          case "otakuDo-1.jpg":
+          otaku.show(Emotion.ANGER1);
+          break;
+
+          case "otakuDo-2.jpg":
+          otaku.show(Emotion.ANGER2);
+          break;
+
+          case "otakuAi-1.jpg":
+          otaku.show(Emotion.SAD1);
+          break;
+
+          case "otakuAi-2.jpg":
+          otaku.show(Emotion.SAD2);
+          break;
+
+          default:
+          break;
+        }
+      }
+
       void keyPressed() {
         if (keyCode == UP) {
           textController.changeChoiceSelection(-1);
@@ -226,6 +224,8 @@ void draw() {
               speak_count = 0;
 
               if (index == texts.length -1) {
+
+                /* 選択肢を表示する場合 */
                 if (names[index].indexOf("choice") != -1) {
                   switch(textController.getChoiceSelection()){
                     case 0:
@@ -247,14 +247,17 @@ void draw() {
                     default:
                     break;
                   }
+
                   index = 0;
                   skip_order = csvPureser.getChoiceFileSize(c_values[c_order]) - textController.getChoiceSelection();
                   c_order++;
                   flag = true;
-                  
-                  }else if (names[index].indexOf("game1") != -1) {
-                    stopSoundGameAudio();
-                    textSize(48);
+                /* ここまで選択肢を表示する場合 */  
+
+                /* ゲームを表示する場合 */
+                }else if (names[index].indexOf("game1") != -1) {
+                  stopSoundGameAudio();
+                  textSize(48);
                   switch(game1_result){
                     case 0:
                     s_order++;
@@ -271,24 +274,26 @@ void draw() {
                     default:
                     break;
                   }
+
                   index = 0;
                   skip_order = csvPureser.getGameFileSize(g_values[g_order]) - game1_result;
                   g_order++;
                   flag = true;
-                  
+              /* ここまでゲームを表示する場合 */
+
+              }else{
+                index = 0;
+                if (flag == true) {
+                  s_order = s_order + skip_order;
+                  flag = false;
                   }else{
-                    index = 0;
-                    if (flag == true) {
-                      s_order = s_order + skip_order;
-                      flag = false;
-                      }else{
-                        s_order++;
-                      }
-                      skip_order = 0;
-                    }
-                    
-                }else{
-                  index++;
+                    s_order++;
+                  }
+                  skip_order = 0;
                 }
-              }
+                
+            }else{
+              index++;
             }
+          }
+        }
